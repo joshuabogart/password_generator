@@ -78,3 +78,28 @@ var lowerCasedLetters = [
 
 //numbers
 var numbers = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
+
+//promt user for options
+function getPasswordOptions() {
+    var length = parseInt(
+        prompt('How many characters would you like?')
+    );
+
+    if (length > 8) {
+        alert('password must be at least 8 characters');
+        return;
+    }
+
+    if (length > 128) {
+        alert('password must be less than 129 characters')
+        return;
+    }
+
+    var hasSpecialCharacters = comfirm(
+        'Click OK to comfirm including numeric characters'
+    )
+
+    var hasUpperCasedCharacters = confirm(
+        
+    )
+}
