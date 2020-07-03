@@ -80,7 +80,7 @@ var lowerCasedLetters = [
 var numbers = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
 
 //promt user for options
-function getPasswordOptions() {
+function getOptions() {
     var length = parseInt(
         prompt('How many characters would you like?')
     );
@@ -96,10 +96,86 @@ function getPasswordOptions() {
     }
 
     var hasSpecialCharacters = comfirm(
-        'Click OK to comfirm including numeric characters'
-    )
+        'Click OK to comfirm including special characters'
+    );
 
     var hasUpperCasedCharacters = confirm(
-        
-    )
+        'Click OK to comfirm including uppercase characters'
+    );
+
+    var hasLowerCasedLetters = comfirm(
+        'Click OK to comfirm including lowercse characters'
+    );
+
+    var hasNumericCharacters = comfirm(
+        'Click OK to comfirm including numbers'
+    );
+
+    var passwordOptions = {
+        length: length,
+        hasSpecialCharacters: hasSpecialCharacters,
+        hasNumericCharacters: hasNumericCharacters,
+        hasLowerCasedCharacters: hasLowerCasedCharacters,
+        hasUpperCasedCharacters: hasUpperCasedCharacters
+      };
+
+      return passwordOptions;
+}
+
+function getRandom(arr) {
+    var randIndex = Math.floor(Math.random() * arr.length);
+    var randElement = arr[randIndex];
+  
+    return randElement;
+  }
+
+  function getPasswordOptions() {
+      var length = parseInt(
+          prompt('how many characters would you like your password to be?')
+      );
+
+  if (length < 8) {
+    alert('Password length must be at least 8 characters');
+    return;
+  }
+
+  if (length > 128) {
+    alert('Password length must less than 129 characters');
+    return;
+  }
+  var hasSpecialCharacters = confirm(
+    'Click OK to confirm including special characters.'
+  );
+
+  var hasNumericCharacters = confirm(
+    'Click OK to confirm including numbers'
+  );
+
+  var hasLowerCasedCharacters = confirm(
+    'Click OK to confirm including lowercase letters'
+  );
+
+  var hasUpperCasedCharacters = confirm(
+    'Click OK to confirm including uppercase letters.'
+  );
+
+  if (
+    hasSpecialCharacters === false &&
+    hasNumericCharacters === false &&
+    hasLowerCasedCharacters === false &&
+    hasUpperCasedCharacters === false
+  ) {
+    alert('Must select at least one type');
+    return;
+  }
+
+  var passwordOptions = {
+    length: length,
+    hasSpecialCharacters: hasSpecialCharacters,
+    hasNumericCharacters: hasNumericCharacters,
+    hasLowerCasedCharacters: hasLowerCasedCharacters,
+    hasUpperCasedCharacters: hasUpperCasedCharacters
+  };
+
+  return passwordOptions;
 }
